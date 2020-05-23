@@ -29,6 +29,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			motion.y = JUMP_HEIGHT
+			$AnimatedSprite.play("jump")
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.2)
 	else:

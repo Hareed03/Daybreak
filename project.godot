@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Daybreak: Lunacy of Man"
-run/main_scene="res://game.tscn"
+run/main_scene="res://StartMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
