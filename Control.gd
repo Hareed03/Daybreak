@@ -1,17 +1,12 @@
 extends Control
 
+var scene_path_to_load
 
 func _ready():
-	$MarginContainer/VBoxContainer.grab_focus()
+	for button in $HBoxContainer/buttons.get_children():
+		button.connect("pressed", self, "_on_Button_Pressed", button.scene_to_load)
 
-func _physics_process(delta):
-	if $MarginContainer/VBoxContainer/StartGameButton.is_hovered() == true:
-		$MarginContainer/VBoxContainer/StartGameButton.grab_focus()
-	if $MarginContainer/VBoxContainer/QuitGameButton.is_hovered() == true:
-		$MarginContainer/VBoxContainer/QuitGameButton.grab_focus()
-
-
-func _on_StartGameButton_pressed():
+func _on_Button_Pressed(scene_to_load):
 	get_tree().change_scene("res://Singleplayer.tscn")
 	
 func _on_QuitGameButton_pressed():

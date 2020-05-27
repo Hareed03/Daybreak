@@ -3,7 +3,7 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const GRAVITY = 20
 const ACCELERATION = 50
-const SPEED = 200
+const SPEED = 100
 const MAX_SPEED = 200
 const JUMP_HEIGHT = -550
 
@@ -38,3 +38,13 @@ func _physics_process(delta):
 			motion.x = lerp(motion.x, 0, 0.05)
 	motion = move_and_slide(motion, UP)
 	pass
+	
+	if is_on_floor():
+		if Input.is_action_pressed("crouch") && Input.is_action_pressed("walk_right"):
+			$AnimatedSprite.play("crouch")
+			motion.x = 75
+		if Input.is_action_pressed("crouch"):
+			$AnimatedSprite.play("crouch")
+		if Input.is_action_pressed("crouch") && Input.is_action_pressed("walk_left"):
+			$AnimatedSprite.play("crouch")
+			motion.x = -75
