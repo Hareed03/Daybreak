@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://New Piskel (5).png" type="Texture" id=1]
 [ext_resource path="res://fire.gd" type="Script" id=2]
+[ext_resource path="res://New Piskel-1.png (3).png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fire"
@@ -27,3 +28,16 @@ script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Fire = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+modulate = Color( 0, 0, 0, 0 )
+position = Vector2( -17.79, 71.8546 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+texture_scale = 1.67
+color = Color( 0.776471, 0.67451, 0.196078, 1 )
+range_height = 196.4
+shadow_enabled = true
+shadow_color = Color( 0.0431373, 0.0431373, 0.0588235, 1 )
+shadow_gradient_length = 392.8
+shadow_filter_smooth = 8.8

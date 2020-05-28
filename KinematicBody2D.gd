@@ -8,8 +8,13 @@ const MAX_SPEED = 200
 const JUMP_HEIGHT = -550
 
 var motion = Vector2()
-
+func _integrate_forces(state):
+	var t = state.get_transform()
+	t.origin.x = 10
+	t.origin.y = 10
+	state.set_transform(t)
 func _physics_process(delta):
+	$key.play("nokey")
 	motion.y += GRAVITY
 	var friction = false
 	
@@ -25,7 +30,9 @@ func _physics_process(delta):
 		$AnimatedSprite.play("idle")
 		friction = true
 		motion.x = lerp(motion.x, 0, 0.2)
-		
+	
+
+				
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			motion.y = JUMP_HEIGHT
@@ -48,3 +55,11 @@ func _physics_process(delta):
 		if Input.is_action_pressed("crouch") && Input.is_action_pressed("walk_left"):
 			$AnimatedSprite.play("crouch")
 			motion.x = -75
+	
+func _on_hitbox_area_entered(area: Area2D)-> void:
+		var object = get_node("hitbox").get_collider()
+		if Input.is_action_pressed("interact"):
+			if object.is_in_group("doors"):
+				get_tree().change_scene("res://home1.tscn")
+		if object.is_in_group("doors"):
+				$key.play("key_w")
