@@ -1,63 +1,119 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=38 format=2]
 
-[ext_resource path="res://Skeletone Idle.png" type="Texture" id=1]
-[ext_resource path="res://Skeletone walk2 (1).png" type="Texture" id=2]
+[ext_resource path="res://Skeletone new walk clone (1).png" type="Texture" id=1]
+[ext_resource path="res://Skeletone walk2 clone.png" type="Texture" id=2]
 [ext_resource path="res://Skeletone Idle clone clone-1.png (2).png" type="Texture" id=3]
 [ext_resource path="res://Skeletone Idle clone clone-1.png (3).png" type="Texture" id=4]
+[ext_resource path="res://Skeletone new walk clone.png" type="Texture" id=5]
+[ext_resource path="res://Skeletone sword walk clone (1).png" type="Texture" id=6]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 512, 528 )
+region = Rect2( 0, 0, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 528, 512, 528 )
+region = Rect2( 0, 512, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 512, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 1024, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 1536, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=7]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 2048, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 2560, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=9]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 3072, 512, 512 )
 
 [sub_resource type="AtlasTexture" id=10]
-flags = 4
 atlas = ExtResource( 2 )
+region = Rect2( 0, 3584, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 1024, 512 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 512, 1024, 512 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 1024, 1024, 512 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 1536, 1024, 512 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 2048, 1024, 512 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 2560, 1024, 512 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 3072, 1024, 512 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 3584, 1024, 512 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 1024, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 1536, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 2048, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 2560, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 3072, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 5 )
 region = Rect2( 0, 3584, 512, 512 )
 
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 32 ), SubResource( 33 ) ],
 "loop": true,
 "name": "idle",
 "speed": 2.0
@@ -76,6 +132,16 @@ animations = [ {
 "loop": true,
 "name": "crouch",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "slash",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "swordwalk",
+"speed": 8.0
 } ]
 
 [sub_resource type="Animation" id=12]
@@ -107,9 +173,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="Animation" id=14]
-loop = true
-step = 0.125
+[sub_resource type="Animation" id=31]
+resource_name = "slash"
+length = 0.55
+step = 0.142857
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -118,15 +185,35 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875 )
+"times": PoolRealArray( 0, 0.0243664, 0.150442, 0.200442, 0.302371, 0.400883, 0.453255, 0.5 )
+}
+
+[sub_resource type="Animation" id=14]
+loop = true
+step = 0.125
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
 position = Vector2( 4.54419, 111.332 )
 frames = SubResource( 11 )
-animation = "crouch"
+animation = "slash"
+frame = 7
+centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 1.25
 anims/crouch = SubResource( 12 )
 anims/idle = SubResource( 13 )
+anims/slash = SubResource( 31 )
 anims/walking = SubResource( 14 )

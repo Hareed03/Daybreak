@@ -1,13 +1,56 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://New Piskel-1.png (1).png" type="Texture" id=1]
+[ext_resource path="res://5x5_pixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Control.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=12]
+colors = PoolColorArray( 0, 0, 0, 1, 0.153107, 0.467528, 0.675781, 1 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+emission_shape = 2
+emission_box_extents = Vector3( 600, 600, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 5.0
+color_ramp = SubResource( 13 )
+hue_variation = 0.01
+hue_variation_random = 0.05
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=16]
+default_font = SubResource( 15 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=9]
+default_font = SubResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=10]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://5x5_pixel.ttf"
 
 [sub_resource type="DynamicFont" id=2]
 font_data = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://5x5_pixel.ttf"
@@ -27,45 +70,83 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="BG" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_left = -145.136
+margin_top = 1.40826
+margin_right = 1146.86
+margin_bottom = 637.408
+color = Color( 0.12549, 0.113725, 0.113725, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="buttons" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 1064.0
+[node name="Rain" type="Particles2D" parent="."]
+show_behind_parent = true
+position = Vector2( 163.243, 88.7814 )
+amount = 64
+lifetime = 2.0
+speed_scale = 3.0
+process_material = SubResource( 14 )
 
-[node name="NewGame" type="Button" parent="HBoxContainer/buttons"]
-margin_right = 1024.0
-margin_bottom = 16.0
+[node name="Company" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 550.0
+margin_right = 191.0
+margin_bottom = 606.0
+rect_scale = Vector2( 1.25, 1.25 )
+theme = SubResource( 16 )
+text = "Henk    LTD."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = -507.381
+margin_top = -302.615
+margin_right = 513.619
+margin_bottom = 296.385
+rect_scale = Vector2( 2, 2 )
+theme = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 395.0
+margin_top = 274.0
+margin_right = 625.0
+margin_bottom = 324.0
+alignment = 1
+
+[node name="TITLE" type="Label" parent="CenterContainer/buttons"]
+margin_right = 230.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 5 )
+text = "Daybreak: Lunacy of Man"
+align = 1
+
+[node name="NewGame" type="Button" parent="CenterContainer/buttons"]
+margin_top = 14.0
+margin_right = 230.0
+margin_bottom = 30.0
+theme = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
 custom_fonts/font = SubResource( 2 )
 text = "Start Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuitGameButton" type="Button" parent="HBoxContainer/buttons"]
-margin_top = 20.0
-margin_right = 1024.0
-margin_bottom = 36.0
+[node name="QuitGameButton" type="Button" parent="CenterContainer/buttons"]
+margin_top = 34.0
+margin_right = 230.0
+margin_bottom = 50.0
+custom_styles/hover = SubResource( 11 )
 custom_fonts/font = SubResource( 4 )
 text = "Quit Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/buttons"]
-margin_top = 40.0
-margin_right = 1024.0
-margin_bottom = 1064.0
-texture = ExtResource( 1 )
-
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-margin_left = 1028.0
-margin_right = 1028.0
-margin_bottom = 1064.0
-[connection signal="toggled" from="HBoxContainer/buttons/NewGame" to="." method="_on_StartGameButton_toggled"]
-[connection signal="toggled" from="HBoxContainer/buttons/QuitGameButton" to="." method="_on_QuitGameButton_toggled"]
+[connection signal="pressed" from="CenterContainer/buttons/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="CenterContainer/buttons/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]

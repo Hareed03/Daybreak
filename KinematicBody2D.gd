@@ -2,32 +2,44 @@ extends KinematicBody2D
 
 const UP = Vector2(0, -1)
 const GRAVITY = 20
-const ACCELERATION = 50
+const ACCELERATION = 40
 const SPEED = 100
-const MAX_SPEED = 200
+const MAX_SPEED = 190
 const JUMP_HEIGHT = -550
 
 var motion = Vector2()
-func _integrate_forces(state):
-	var t = state.get_transform()
-	t.origin.x = 10
-	t.origin.y = 10
-	state.set_transform(t)
+var attacking = false
+
+func _ready():
+	$AnimatedSprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+
 func _physics_process(delta):
+	
 	$key.play("nokey")
+	
 	motion.y += GRAVITY
 	var friction = false
 	
 	if Input.is_action_pressed("walk_right"):
 		motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
+		
 		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.play("walking")
+		
 	elif Input.is_action_pressed("walk_left"):
 		motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
+		
 		$AnimatedSprite.flip_h = true
 		$AnimatedSprite.play("walking")
+		
+	elif Input.is_action_just_pressed("slash"):
+			attacking = true
+	elif attacking == true:
+		$AnimatedSprite.play("slash")
+		motion.x = 0
 	else:
 		$AnimatedSprite.play("idle")
+		
 		friction = true
 		motion.x = lerp(motion.x, 0, 0.2)
 	
@@ -55,7 +67,11 @@ func _physics_process(delta):
 		if Input.is_action_pressed("crouch") && Input.is_action_pressed("walk_left"):
 			$AnimatedSprite.play("crouch")
 			motion.x = -75
-	
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "slash":
+		attacking=false
+
 func _on_hitbox_area_entered(area: Area2D)-> void:
 		var object = get_node("hitbox").get_collider()
 		if Input.is_action_pressed("interact"):

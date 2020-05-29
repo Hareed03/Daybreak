@@ -76,20 +76,20 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 4096, 1024 )
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
-position = Vector2( -106.914, 12.8164 )
+position = Vector2( 10.9414, -42.6452 )
 scale = Vector2( 0.146199, 0.146199 )
-centered = false
+frame = 0
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -69.0415, 51.6476 )
+position = Vector2( 49.2098, -4.1948 )
 shape = SubResource( 1 )
 
 [node name="hitbox" type="Area2D" parent="."]
 position = Vector2( -44.2222, 41.5147 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2( -25.6801, 11.3974 )
+position = Vector2( 92.879, -43.6123 )
 shape = SubResource( 2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
